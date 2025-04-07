@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,6 +27,7 @@ DEBUG = False
 
 # ALLOWED_HOSTS = ['192.168.0.102','127.0.0.1','192.168.10.199']
 ALLOWED_HOSTS = ['*']  # Allow all hosts for development
+
 
 # Application definition
 
@@ -213,4 +215,16 @@ CELERY_BEAT_SCHEDULE = {
         'task': 'accounts.tasks.check_and_start_quizzes',
         'schedule': crontab(minute='*/1'),  # Run every minute to check for rooms
     },
+}
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME', 'mydb'),
+        'USER': os.getenv('DB_USER', 'myuser'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'mypassword'),
+        'HOST': os.getenv('DB_HOST', 'localhost'),
+        'PORT': os.getenv('DB_PORT', '5432'),
+    }
 }

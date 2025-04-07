@@ -54114,3 +54114,7 @@ INFO 2025-04-07 18:23:07,181 runserver [mHTTP GET /static/screenshots/wide-scre
 INFO 2025-04-07 18:23:07,346 runserver [mHTTP GET /static/screenshots/narrow-screenshot.png 200 [0.15, 127.0.0.1:55230][0m
 INFO 2025-04-07 18:55:56,520 autoreload F:\Brain-Bloom - Copy\myproject\myproject\settings.py changed, reloading.
 INFO 2025-04-07 18:56:26,757 autoreload Watching for file changes with StatReloader
+INFO 2025-04-07 18:57:51,715 server HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2025-04-07 18:57:51,715 server Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO 2025-04-07 18:57:51,715 server Listening on TCP address 127.0.0.1:8000
+INFO 2025-04-07 19:42:13,702 autoreload F:\Brain-Bloom - Copy\myproject\myproject\settings.py changed, reloading.
