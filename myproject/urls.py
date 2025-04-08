@@ -4,7 +4,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from accounts import views
 from django.views.generic import TemplateView
-
+from django.views.static import serve
+from django.urls import re_path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
@@ -49,3 +50,8 @@ urlpatterns = [
 # Serve media files during development
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+else:
+    # Serve media files in production
+    urlpatterns += [
+        re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+    ]
