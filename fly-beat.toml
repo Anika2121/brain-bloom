@@ -1,8 +1,8 @@
-app = "brain-bloom-worker"
+app = "brain-bloom-beat"
 primary_region = "iad"
 
 [build]
-dockerfile = "Dockerfile"
+  builder = "paketobuildpacks/builder:base"
 
 [env]
 REDIS_URL = "redis://default:Brain-Bloom@redis-15027.c321.us-east-1-2.ec2.redns.redis-cloud.com:15027"
@@ -14,9 +14,9 @@ REDIS_URL = "redis://default:Brain-Bloom@redis-15027.c321.us-east-1-2.ec2.redns.
   cpus = 1
 
 [processes]
-  worker = "celery -A brain-bloom-django worker --loglevel=info"
+  beat = "celery -A brain-bloom-django beat --loglevel=info"
 
-  [mounts]
+[mounts]
  source = "data"
   destination = "/data"
   size = "2GB"
