@@ -2,10 +2,8 @@ app = "brain-bloom-worker"
 primary_region = "iad"
 
 [build]
-builder = "paketobuildpacks/builder:base"
-[build.args]
+dockerfile = "Dockerfile"
 
-BP_BUILD_COMMAND = "/workspace/build.sh"
 [env]
   PYTHONUNBUFFERED = "1"
 
