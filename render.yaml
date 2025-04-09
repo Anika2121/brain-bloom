@@ -1,41 +1,31 @@
 services:
   - type: worker
-    name: celery-worker
+    name: brain-bloom-celery-worker
     env: python
     buildCommand: "pip install -r requirements.txt --index-url https://download.pytorch.org/whl/cpu"
     startCommand: "celery -A myproject worker --loglevel=info"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: myproject-db
+          name: brain-bloom
           property: connectionString
       - key: REDIS_URL
         fromService:
           type: redis
-          name: myproject-redis
+          name: brain-bloom-redis
           property: connectionString
   - type: worker
-    name: celery-beat
+    name: brain-bloom-celery-beat
     env: python
     buildCommand: "pip install -r requirements.txt --index-url https://download.pytorch.org/whl/cpu"
     startCommand: "celery -A myproject beat --loglevel=info"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: myproject-db
+          name: brain-bloom
           property: connectionString
       - key: REDIS_URL
         fromService:
           type: redis
-          name: myproject-redis
+          name: brain-bloom-redis
           property: connectionString
-  - type: redis
-    name: myproject-redis
-    plan: free
-    ipAllowList:
-      - source: "0.0.0.0/0"
-        description: "Allow all IPs (for development)"
-  - type: pserv
-    name: myproject-db
-    env: postgres
-    plan: free
