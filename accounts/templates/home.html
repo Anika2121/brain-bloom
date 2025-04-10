@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Brain Bloom - Virtual Group Study</title>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> -->
     <link rel="manifest" href="{% static 'manifest.json' %}">
     <!-- Meta tags for PWA -->
     <meta name="theme-color" content="#000000">
@@ -14,7 +14,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+   
     <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;700&display=swap" rel="stylesheet">
 
     <style>
@@ -97,10 +97,6 @@
         box-sizing: border-box;
         transition: background-color 0.3s ease, color 0.3s ease;
       }
-      .swiper-container {
-        width: 100%;
-        padding: 50px 0;
-    }
     .review-card {
         background: white;
         padding: 30px;
@@ -521,62 +517,323 @@
         color: var(--button-hover-bg);
       }
 
-      .reviews-section {
-        padding: 80px 40px;
-        text-align: center;
-        background: var(--container-bg);
-        border-radius: 20px;
-        margin-bottom: 60px;
-      }
+     .review-section {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 20px;
+    margin-top: 24px;
+    box-shadow: 0 4px 6px var(--shadow);
+}
 
-      .reviews-section h2 {
-        font-size: 3.5rem;
-        font-weight: 900;
-        margin-bottom: 40px;
-        color: var(--text-primary);
-      }
+.review-section h3 {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
 
-      .reviews-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 30px;
-      }
+.review-section form {
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 10px;
+}
 
-      .review-card {
-        background: var(--card-bg);
-        border-radius: 20px;
-        padding: 30px;
-        box-shadow: 0 5px 15px var(--shadow);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
+.form-select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid var(--input-border);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    background-color: var(--input-bg);
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%233496DB%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem top 50%;
+    background-size: 0.65rem auto;
+}
 
-      .review-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px var(--shadow);
-      }
+.form-select:focus {
+    border-color: var(--button-bg);
+    outline: none;
+    box-shadow: 0 0 0 3px var(--input-focus-shadow);
+}
 
-      .review-card .stars {
-        margin-bottom: 20px;
-      }
+.form-textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid var(--input-border);
+    border-radius: 8px;
+    min-height: 120px;
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: all 0.3s ease;
+    background-color: var(--input-bg);
+    resize: vertical;
+}
 
-      .review-card .stars i {
-        color: #FFD700;
-        font-size: 1.3rem;
-      }
+.form-textarea:focus {
+    border-color: var(--button-bg);
+    outline: none;
+    box-shadow: 0 0 0 3px var(--input-focus-shadow);
+}
 
-      .review-card p {
+button[type="submit"] {
+    background: var(--button-bg);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    font-size: 1rem;
+}
+
+button[type="submit"]:hover {
+    background: var(--button-hover-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px var(--shadow);
+}
+
+.your-reviews {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.your-reviews h4 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.review-item {
+    background: var(--input-bg);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px var(--shadow);
+    border-left: 4px solid var(--button-bg);
+}
+
+.review-rating {
+    color: #f1c40f;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.review-item p {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.review-item small {
+    color: var(--text-primary);
+    opacity: 0.7;
+    font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+    .review-section {
+        margin: 0.5rem;
+        padding: 1rem;
+        border-radius: 12px;
+    }
+
+    .review-section h3 {
+        font-size: 1.2rem;
+        padding: 1rem;
+    }
+
+    .form-select {
+        padding: 0.7rem 1rem;
+        font-size: 0.95rem;
+    }
+
+    .form-textarea {
+        padding: 0.8rem;
+        font-size: 0.95rem;
+        min-height: 100px;
+    }
+
+    button[type="submit"] {
+        padding: 0.7rem 1rem;
+        font-size: 0.95rem;
+    }
+
+    .your-reviews {
+        padding-top: 1.5rem;
+    }
+
+    .review-item {
+        padding: 1rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .review-rating {
         font-size: 1rem;
-        margin-bottom: 20px;
-        color: var(--text-primary);
-        font-style: italic;
-      }
+    }
 
-      .review-card .reviewer {
-        font-weight: 600;
+    .review-item p {
+        font-size: 0.95rem;
+    }
+
+    .review-item small {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .review-section h3 {
         font-size: 1.1rem;
-        color: var(--text-primary);
-      }
+        padding: 0.8rem;
+    }
 
+    .form-textarea {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+
+    .form-select {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    button[type="submit"] {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .your-reviews h4 {
+        font-size: 1.1rem;
+    }
+
+    .review-item {
+        padding: 0.8rem;
+    }
+
+    .review-item p {
+        font-size: 0.9rem;
+    }
+}
+.reviews-section {
+    padding: 80px 40px;
+    text-align: center;
+    background: var(--container-bg);
+    box-shadow: 0 4px 6px var(--shadow);
+    border-radius: 20px;
+    margin-bottom: 60px;
+}
+
+.reviews-section h2 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 40px;
+    color: var(--text-primary);
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.review-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 5px 15px var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px var(--shadow);
+}
+
+.review-card .rating {
+    color: #ffd700;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.review-card .review-text {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+    font-style: italic;
+}
+
+.review-card .review-author {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+    .reviews-section {
+        padding: 40px 20px;
+    }
+
+    .reviews-section h2 {
+        font-size: 2rem;
+    }
+
+    .reviews-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .review-card {
+        padding: 20px;
+    }
+
+    .review-card .rating {
+        font-size: 1.3rem;
+    }
+
+    .review-card .review-text {
+        font-size: 0.95rem;
+    }
+
+    .review-card .review-author {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .reviews-section {
+        padding: 30px 15px;
+    }
+
+    .reviews-section h2 {
+        font-size: 1.8rem;
+    }
+
+    .review-card {
+        padding: 15px;
+    }
+
+    .review-card .rating {
+        font-size: 1.2rem;
+    }
+
+    .review-card .review-text {
+        font-size: 0.9rem;
+    }
+
+    .review-card .review-author {
+        font-size: 0.95rem;
+    }
+}
       .team-section {
         padding: 80px 40px;
         text-align: center;
@@ -977,23 +1234,24 @@
         </div>
       </section> -->
 
-      <div class="reviews-slider swiper-container">
-        <div class="swiper-wrapper">
-            {% for review in reviews %}
-            <div class="swiper-slide review-card">
-                <div class="rating">
-                    {% for _ in "x"|ljust:review.rating %}
-                    <span class="star">★</span>
-                    {% endfor %}
-                </div>
-                <p class="review-text">{{ review.text }}</p>
-                <p class="review-author">- {{ review.user.name }}</p>
+  <section class="reviews-section">
+    <h2>What Our Users Say</h2>
+    <div class="reviews-grid">
+        {% for review in reviews %}
+        <div class="review-card">
+            <div class="rating">
+                {% for _ in "x"|ljust:review.rating %}
+                <span class="star">★</span>
+                {% endfor %}
             </div>
-            {% endfor %}
+            <p class="review-text">{{ review.text }}</p>
+            <p class="review-author">- {{ review.user.name }}</p>
         </div>
-        <div class="swiper-pagination"></div>
+        {% empty %}
+        <p>No reviews available yet.</p>
+        {% endfor %}
     </div>
-
+</section>
       <section class="team-section" id="team">
         <h2>Meet Our Team</h2>
         <div class="team-grid">
@@ -1103,7 +1361,7 @@
     </script>
 
 
-<script>
+<!-- <script>
   const swiper = new Swiper('.swiper-container', {
       loop: false,  // Disabled loop mode
       autoplay: {
@@ -1126,7 +1384,7 @@
           slideShadows: true,
       },
   });
-</script>
+</script> -->
 <script>
   if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
